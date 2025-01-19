@@ -9,9 +9,10 @@ function App() {
 	const [expression, setExpression] = useState('');
 	const [description, setDescription] = useState('');
 	const [shaderCode, setShaderCode] = useState('');
+    const [loading, setLoading] = useState(false);
 	const [error, setError] = useState('');
-	const canvasRef = useRef(null);
 	const [result, setResult] = useState('');
+	const canvasRef = useRef(null);
 
 	const cleanShaderCode = (shaderCode) => {
 		// Remove the version line (`#version 300 es`)
@@ -102,6 +103,7 @@ function App() {
     };
 
     const generateShader = async () => {
+        setLoading(true);
         try {
             const response = await fetch(`https://invedioassesment.onrender.com/generate_shader?description=${encodeURIComponent(description)}`);
             console.log(`HTTP Status: ${response.status}`);
@@ -132,6 +134,7 @@ function App() {
             console.error('Fetch Error:', fetchError);
             setError('Request failed. Please check your connection.');
         }
+        setLoading(false);
     };
 
 	const getFallbackShader = (code) => `
@@ -185,7 +188,9 @@ function App() {
 					placeholder="Enter a webgl description (e.g. rotating cube)"
 					className='bg-transparent border outline-none border-neutral-600 p-10 h-40 text-2xl w-full text-white'
 				/>
-				<button className='w-full h-12 hover:bg-purple-500 bg-white text-black' onClick={generateShader}>Calculate</button>
+				<button className='w-full h-12 hover:bg-purple-500 bg-white text-black' onClick={generateShader}>
+                    {loading ? "Loading ..." : "Generate"}
+                </button>
 
 				{shaderCode && (
 					<div className='text-left'>
