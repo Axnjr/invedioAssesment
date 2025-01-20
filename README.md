@@ -1,6 +1,6 @@
 # invedioAssesment
 
-i have deployed my elixir backend on render free teir so it spins down the service due to inactivity pls wait for 2 minutes before trying again in case of error. 😇😊🙏🙏🤲
+I have deployed my Elixir backend on the render free tier so it spins down the service due to inactivity pls wait for 2 minutes before trying again in case of an error. 😇😊🙏🙏🤲
 
 - Backend url: https://invedioassesment.onrender.com)
  
@@ -8,3 +8,4 @@ i have deployed my elixir backend on render free teir so it spins down the servi
 
 - LLM: Qwen/Qwen2.5-Coder-32B-Instruct
 
+Please create an Issue, send a PR, or temporarily Star this repo if someone actually reviewed it 🎀🫡
